@@ -7,7 +7,7 @@ const int greenLED = 4;     // Green LED for safe air indication
 const int gassensor = 34;   // MQ135 Analog Output (via 3.3V voltage divider)
 
 // ==========================================
-// --- CALIBRATION SETTINGS ---
+// --- CALIBRATION SETTINGS For MQ135---
 // ==========================================
 // 1. Look up the current AQI in your city (e.g., Kalyan is ~97).
 // 2. Look at your Serial Monitor and find your average "Raw Sensor Value".
@@ -30,11 +30,14 @@ void setup() {
   pinMode(gassensor, INPUT);
   pinMode(greenLED, OUTPUT);
   
-  // Blink the LED 3 times at boot
-
+  // Blink the LED 3 times at boot as an indication of its working !! 
+    int i;
+    for(i=0;i<3;i++){
     digitalWrite(greenLED, HIGH);
-    
- 
+    delay(500);
+    digitalWrite(greenLED, LOW);
+    delay(500);
+    }
   
 }
 
