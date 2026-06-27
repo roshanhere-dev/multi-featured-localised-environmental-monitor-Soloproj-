@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roshan's Solo-Project - Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ffb4ab",
+                      "tertiary-container": "#a0a3a5",
+                      "surface-container-lowest": "#060e20",
+                      "error-container": "#93000a",
+                      "secondary-container": "#03b5d3",
+                      "on-secondary-fixed": "#001f26",
+                      "surface-variant": "#2d3449",
+                      "surface-dim": "#0b1326",
+                      "surface-container": "#171f33",
+                      "on-secondary": "#003640",
+                      "on-tertiary-container": "#36393b",
+                      "on-primary-fixed-variant": "#005236",
+                      "surface": "#0b1326",
+                      "inverse-primary": "#006c49",
+                      "on-error": "#690005",
+                      "primary": "#4edea3",
+                      "on-tertiary-fixed": "#191c1e",
+                      "on-tertiary": "#2d3133",
+                      "tertiary": "#c4c7c9",
+                      "on-surface-variant": "#bbcabf",
+                      "on-tertiary-fixed-variant": "#444749",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "outline": "#86948a",
+                      "on-surface": "#dae2fd",
+                      "on-primary-fixed": "#002113",
+                      "primary-fixed": "#6ffbbe",
+                      "secondary-fixed": "#acedff",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-container": "#00422b",
+                      "on-primary": "#003824",
+                      "surface-bright": "#31394d",
+                      "inverse-surface": "#dae2fd",
+                      "tertiary-fixed": "#e0e3e5",
+                      "secondary": "#4cd7f6",
+                      "outline-variant": "#3c4a42",
+                      "surface-tint": "#4edea3",
+                      "surface-container-highest": "#2d3449",
+                      "surface-container-high": "#222a3d",
+                      "primary-fixed-dim": "#4edea3",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "on-secondary-container": "#00424e",
+                      "on-background": "#dae2fd",
+                      "surface-container-low": "#131b2e",
+                      "tertiary-fixed-dim": "#c4c7c9",
+                      "background": "#0b1326",
+                      "inverse-on-surface": "#283044",
+                      "primary-container": "#10b981"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1440px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "40px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg-mobile": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "headline-lg": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "code-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glow-text {
+            text-shadow: 0 0 20px rgba(78, 222, 163, 0.4);
+        }
+        @keyframes pulse-emerald {
+            0% { box-shadow: 0 0 0 0 rgba(78, 222, 163, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(78, 222, 163, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(78, 222, 163, 0); }
+        }
+        .btn-pulse {
+            animation: pulse-emerald 2s infinite;
+        }
+        .terminal-grid {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased h-screen flex flex-col overflow-hidden selection:bg-primary selection:text-on-primary relative">
+<!-- Abstract Ambient Glow Background -->
+<div aria-hidden="true" class="absolute inset-0 pointer-events-none overflow-hidden">
+<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[100px]"></div>
+</div>
+<!-- Shared Component: TopNavBar -->
+<header class="w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-white/10 shadow-none flex-shrink-0">
+<div class="flex justify-between items-center px-margin-desktop py-2 max-w-container-max mx-auto">
+<div class="font-display-lg text-display-lg font-bold text-primary tracking-tighter cursor-pointer active:scale-95"><span class="font-code-sm text-code-sm text-primary uppercase tracking-widest">Roshan Shorey</span></div>
+<div class="font-code-sm text-[10px] sm:text-code-sm text-on-surface-variant uppercase tracking-widest opacity-80">2nd Year, SVNIT Surat</div></div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop py-4 md:py-8 relative z-10 w-full max-w-container-max mx-auto overflow-hidden">
+<!-- Header -->
+<div class="text-center mb-6 max-w-4xl mx-auto flex-shrink-0">
+<h1 class="font-display-lg text-[40px] md:text-[56px] text-on-surface leading-[1.1] mb-2 tracking-tighter"><span class="text-primary glow-text block mt-1">Welcome !!</span>
+</h1>
+<p class="font-code-sm text-[12px] md:text-code-sm text-on-surface-variant max-w-2xl mx-auto opacity-80 uppercase tracking-widest">A multi-featured LOCALISED ENVIRONMENTAL Monitor </p>
+</div>
+<!-- Central Component: Terminal Window -->
+<div class="w-full max-w-3xl bg-surface-container-lowest border border-white/10 rounded-none shadow-[0_0_30px_rgba(0,0,0,0.5)] mb-6 relative group terminal-grid flex flex-col flex-shrink">
+<!-- Glassmorphic highlight border simulation -->
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-primary/30 to-transparent"></div>
+<div class="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-primary/30 to-transparent"></div>
+<!-- Terminal Header bar -->
+<div class="flex items-center justify-between px-4 py-2 bg-surface-container/50 border-b border-white/5 flex-shrink-0">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-surface-variant"></div>
+<div class="w-3 h-3 rounded-full bg-surface-variant"></div>
+<div class="w-3 h-3 rounded-full bg-surface-variant"></div>
+</div>
+<div class="font-code-sm text-[12px] text-on-surface-variant opacity-50">root@roshan-solo:~</div>
+<div class="w-12"></div> <!-- Spacer for center alignment -->
+</div>
+<!-- Terminal Content -->
+<div class="p-4 md:p-6 font-code-sm text-[12px] md:text-code-sm text-on-surface-variant whitespace-pre-wrap leading-relaxed h-[200px] md:h-[250px] overflow-y-auto custom-scrollbar flex-grow" id="terminal-content"></div>
+<!-- Terminal Scrollbar styling (inline CSS for webkit) -->
+<style>
+                .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+                .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+                .custom-scrollbar::-webkit-scrollbar-thumb { background: #4edea3; }
+            </style>
+</div>
+<!-- CTA Action -->
+<button class="flex-shrink-0 bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 uppercase tracking-widest hover:bg-primary-fixed transition-all duration-700 btn-pulse flex items-center gap-3 opacity-0 scale-95 pointer-events-none" id="dashboard-btn">
+            Enter Monitor Dashboard !!
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="w-full bg-surface-dim/80 backdrop-blur-md border-t border-white/5 z-40 flex-shrink-0">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-3 w-full">
+<div class="font-label-caps text-[10px] md:text-label-caps text-on-surface mb-2 md:mb-0">
+                Designed &amp; Engineered by Roshan Shorey
+            </div>
+<div class="flex items-center gap-6">
+<!-- Links from JSON -->
+<a class="font-code-sm text-[12px] md:text-code-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-all hover:opacity-80" href="#">GitHub</a>
+<a class="font-code-sm text-[12px] md:text-code-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-all hover:opacity-80" href="#">LinkedIn</a>
+</div>
+</div>
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const terminalData = [
+            [
+                { text: "> ", class: "text-secondary opacity-70" },
+                { text: "[SYSTEM]", class: "text-secondary" },
+                { text: " Initializing ESP32 microcontroller Core...\n", class: "" }
+            ],
+            [
+                { text: "> ", class: "text-secondary opacity-70" },
+                { text: "[I2C BUS]", class: "text-secondary-fixed" },
+                { text: " BME280 climate sensor detected at address ", class: "" },
+                { text: "0x76\n", class: "text-primary-fixed" }
+            ],
+            [
+                { text: "> ", class: "text-secondary opacity-70" },
+                { text: "[ANALOG]", class: "text-tertiary-container" },
+                { text: " MQ135 gas tracking array... ", class: "" },
+                { text: "CALIBRATED\n", class: "text-primary font-bold" }
+            ],
+            [
+                { text: "> ", class: "text-secondary opacity-70" },
+                { text: "[STATUS]", class: "text-inverse-surface" },
+                { text: " WebSockets local server link... ", class: "" },
+                { text: "STABLE\n", class: "text-primary font-bold" }
+            ],
+            [
+                { text: "> ", class: "text-secondary opacity-70" },
+                { text: "[NETWORK]", class: "text-secondary-fixed" },
+                { text: " WiFi SSID 'IoT_Core_Secure' connected... ", class: "" },
+                { text: "OK\n", class: "text-primary font-bold" }
+            ]
+        ];
+
+        const terminalContainer = document.getElementById('terminal-content');
+        const dashboardBtn = document.getElementById('dashboard-btn');
+        let currentCursor = null;
+
+        function updateCursor() {
+            if (currentCursor) {
+                currentCursor.remove();
+            }
+            currentCursor = document.createElement('span');
+            currentCursor.className = 'animate-pulse text-primary font-bold';
+            currentCursor.textContent = '_';
+            terminalContainer.appendChild(currentCursor);
+            terminalContainer.scrollTop = terminalContainer.scrollHeight;
+        }
+
+        async function typeTerminal() {
+            terminalContainer.innerHTML = '';
+            updateCursor();
+            
+            await new Promise(r => setTimeout(r, 800)); // Initial delay
+
+            for (let i = 0; i < terminalData.length; i++) {
+                const lineData = terminalData[i];
+                
+                for (let j = 0; j < lineData.length; j++) {
+                    const segment = lineData[j];
+                    const span = document.createElement('span');
+                    if (segment.class) span.className = segment.class;
+                    
+                    // Insert before the cursor
+                    terminalContainer.insertBefore(span, currentCursor);
+                    
+                    for (let k = 0; k < segment.text.length; k++) {
+                        span.textContent += segment.text[k];
+                        terminalContainer.scrollTop = terminalContainer.scrollHeight;
+                        await new Promise(r => setTimeout(r, 20)); // Typing speed
+                    }
+                }
+                await new Promise(r => setTimeout(r, 400)); // Delay between lines
+            }
+            
+            // Wait 500ms before revealing button
+            await new Promise(r => setTimeout(r, 500));
+            // Reveal button after typing is complete
+            dashboardBtn.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+            dashboardBtn.classList.add('opacity-100', 'scale-100');
+        }
+
+        typeTerminal();
+    });
+</script>
+</body></html>
