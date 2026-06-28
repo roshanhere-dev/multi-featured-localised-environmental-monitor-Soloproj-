@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en" style=""><head>
+<html class="dark" lang="en" ><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Roshan's Solo-Project - Terminal</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -165,6 +164,9 @@
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 24px 24px;
         }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #4edea3; }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased h-screen flex flex-col overflow-hidden selection:bg-primary selection:text-on-primary relative">
@@ -182,10 +184,10 @@
 <!-- Main Canvas -->
 <main class="flex-grow flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop py-4 md:py-8 relative z-10 w-full max-w-container-max mx-auto overflow-hidden">
 <!-- Header -->
-<div class="text-center mb-6 max-w-4xl mx-auto flex-shrink-0">
-<h1 class="font-display-lg text-[40px] md:text-[56px] text-on-surface leading-[1.1] mb-2 tracking-tighter"><span class="text-primary glow-text block mt-1">Welcome !!</span>
+<div class="text-center mb-6 max-w-4xl mx-auto flex-shrink-0 h-[100px] md:h-[110px] flex flex-col justify-end">
+<h1 class="font-display-lg text-[40px] md:text-[56px] text-on-surface leading-[1.1] mb-2 tracking-tighter min-h-[44px] md:min-h-[61px]"><span class="text-primary glow-text block mt-1" id="welcome-text"></span>
 </h1>
-<p class="font-code-sm text-[12px] md:text-code-sm text-on-surface-variant max-w-2xl mx-auto opacity-80 uppercase tracking-widest">A multi-featured LOCALISED ENVIRONMENTAL Monitor </p>
+<p class="font-code-sm text-[12px] md:text-code-sm text-on-surface-variant max-w-2xl mx-auto opacity-80 uppercase tracking-widest min-h-[18px] md:min-h-[21px]" id="subtitle-text"></p>
 </div>
 <!-- Central Component: Terminal Window -->
 <div class="w-full max-w-3xl bg-surface-container-lowest border border-white/10 rounded-none shadow-[0_0_30px_rgba(0,0,0,0.5)] mb-6 relative group terminal-grid flex flex-col flex-shrink">
@@ -204,18 +206,17 @@
 </div>
 <!-- Terminal Content -->
 <div class="p-4 md:p-6 font-code-sm text-[12px] md:text-code-sm text-on-surface-variant whitespace-pre-wrap leading-relaxed h-[200px] md:h-[250px] overflow-y-auto custom-scrollbar flex-grow" id="terminal-content"></div>
-<!-- Terminal Scrollbar styling (inline CSS for webkit) -->
-<style>
-                .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-                .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-                .custom-scrollbar::-webkit-scrollbar-thumb { background: #4edea3; }
-            </style>
 </div>
 <!-- CTA Action -->
-<button class="flex-shrink-0 bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 uppercase tracking-widest hover:bg-primary-fixed transition-all duration-700 btn-pulse flex items-center gap-3 opacity-0 scale-95 pointer-events-none" id="dashboard-btn">
-            Enter Monitor Dashboard !!
-            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+<div class="relative flex justify-center items-center h-12 flex-shrink-0 w-full max-w-sm mx-auto">
+<div class="absolute font-label-caps text-label-caps text-on-surface-variant opacity-70 uppercase tracking-widest transition-opacity duration-500 flex items-center gap-2" id="wait-indicator">
+<span class="animate-pulse">PLEASE WAIT...</span>
+</div>
+<button class="absolute bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 uppercase tracking-widest hover:bg-primary-fixed transition-all duration-700 btn-pulse flex items-center gap-3 opacity-0 scale-95 pointer-events-none" id="dashboard-btn">
+                Enter Monitor Dashboard !!
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </button>
+</div>
 </main>
 <!-- Shared Component: Footer -->
 <footer class="w-full bg-surface-dim/80 backdrop-blur-md border-t border-white/5 z-40 flex-shrink-0">
@@ -264,26 +265,44 @@
             ]
         ];
 
+        const welcomeText = document.getElementById('welcome-text');
+        const subtitleText = document.getElementById('subtitle-text');
         const terminalContainer = document.getElementById('terminal-content');
         const dashboardBtn = document.getElementById('dashboard-btn');
-        let currentCursor = null;
-
-        function updateCursor() {
-            if (currentCursor) {
-                currentCursor.remove();
+        const waitIndicator = document.getElementById('wait-indicator');
+        
+        async function typeString(element, text, cursorChar, speed) {
+            const cursor = document.createElement('span');
+            cursor.textContent = cursorChar;
+            cursor.className = 'animate-pulse font-bold opacity-70 ml-1';
+            element.appendChild(cursor);
+            
+            for (let i = 0; i < text.length; i++) {
+                const charNode = document.createTextNode(text[i]);
+                element.insertBefore(charNode, cursor);
+                await new Promise(r => setTimeout(r, speed));
             }
-            currentCursor = document.createElement('span');
+            cursor.remove();
+        }
+
+        async function runSequence() {
+            await new Promise(r => setTimeout(r, 600)); // Initial delay
+            
+            // 1. Type Welcome
+            await typeString(welcomeText, "Welcome !!", "|", 70);
+            
+            await new Promise(r => setTimeout(r, 400));
+            
+            // 2. Type Subtitle
+            await typeString(subtitleText, "A multi-featured LOCALISED ENVIRONMENTAL Monitor\u00A0", "|", 30);
+            
+            await new Promise(r => setTimeout(r, 500));
+            
+            // 3. Terminal Logs
+            let currentCursor = document.createElement('span');
             currentCursor.className = 'animate-pulse text-primary font-bold';
             currentCursor.textContent = '_';
             terminalContainer.appendChild(currentCursor);
-            terminalContainer.scrollTop = terminalContainer.scrollHeight;
-        }
-
-        async function typeTerminal() {
-            terminalContainer.innerHTML = '';
-            updateCursor();
-            
-            await new Promise(r => setTimeout(r, 800)); // Initial delay
 
             for (let i = 0; i < terminalData.length; i++) {
                 const lineData = terminalData[i];
@@ -293,7 +312,6 @@
                     const span = document.createElement('span');
                     if (segment.class) span.className = segment.class;
                     
-                    // Insert before the cursor
                     terminalContainer.insertBefore(span, currentCursor);
                     
                     for (let k = 0; k < segment.text.length; k++) {
@@ -305,14 +323,19 @@
                 await new Promise(r => setTimeout(r, 400)); // Delay between lines
             }
             
-            // Wait 500ms before revealing button
-            await new Promise(r => setTimeout(r, 500));
-            // Reveal button after typing is complete
-            dashboardBtn.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
-            dashboardBtn.classList.add('opacity-100', 'scale-100');
+            // Wait before revealing button
+            await new Promise(r => setTimeout(r, 600));
+            
+            // 4 & 5. Transition Button
+            waitIndicator.classList.add('opacity-0');
+            setTimeout(() => {
+                waitIndicator.style.display = 'none';
+                dashboardBtn.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+                dashboardBtn.classList.add('opacity-100', 'scale-100');
+            }, 500);
         }
 
-        typeTerminal();
+        runSequence();
     });
 </script>
 </body></html>
