@@ -1,0 +1,72 @@
+----------------------------
+
+  MQ135 Gas Sensor
+
+
+
+VCC ---- VIN (5V)
+
+
+
+GND ----- GND
+
+
+
+AO (Analog)---- GPIO 34 (via Divider)
+
+
+
+bme 280:
+
+
+
+v cc ---- 3v3
+
+gnd --- gnd
+
+sda --- g21
+
+scl g22
+
+
+
+
+
+lm393 comparator
+
+
+
+vcc --- 3v3 line
+
+gnd - gnd
+
+ao ( analog ) --- g4
+
+
+
+LEDs
+
+
+
+bme 280
+
+orange - g25
+
+green -- g 26
+
+
+
+
+
+lm393
+
+orange - g27
+
+green -- g 33
+
+
+
+mq135
+
+orange - g13
+green -- g14
