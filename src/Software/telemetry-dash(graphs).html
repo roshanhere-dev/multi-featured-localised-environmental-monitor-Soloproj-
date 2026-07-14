@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        try {
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        "colors": {
+                            "on-secondary-container": "#0c714d",
+                            "background": "#0b1c30",
+                            "inverse-primary": "#b3c5ff",
+                            "surface-tint": "#1155d0",
+                            "surface-bright": "#f8f9ff",
+                            "on-tertiary-container": "#fff7f1",
+                            "surface-container-low": "#112236",
+                            "on-primary-fixed": "#001849",
+                            "aqi-excellent": "#6cf8bb",
+                            "on-primary-fixed-variant": "#003fa4",
+                            "secondary": "#6cf8bb",
+                            "inverse-on-surface": "#eaf1ff",
+                            "on-error": "#ffffff",
+                            "on-tertiary-fixed-variant": "#653e00",
+                            "secondary-fixed-dim": "#81d8ad",
+                            "on-surface": "#ffffff",
+                            "primary-fixed": "#dae1ff",
+                            "on-error-container": "#93000a",
+                            "primary-fixed-dim": "#b3c5ff",
+                            "on-secondary-fixed": "#002113",
+                            "on-primary-container": "#f8f7ff",
+                            "on-surface-variant": "#c2c6d8",
+                            "primary": "#b3c5ff",
+                            "on-secondary": "#000000",
+                            "outline": "#727687",
+                            "tertiary-fixed": "#ffddb8",
+                            "on-secondary-fixed-variant": "#005236",
+                            "surface-variant": "#213145",
+                            "error-container": "#ffdad6",
+                            "tertiary": "#fcba68",
+                            "outline-variant": "#424656",
+                            "secondary-container": "#006c49",
+                            "surface-container-high": "#1e2f47",
+                            "primary-container": "#1155d0",
+                            "inverse-surface": "#eaf1ff",
+                            "on-primary": "#001849",
+                            "on-tertiary-fixed": "#2a1700",
+                            "on-background": "#ffffff",
+                            "secondary-fixed": "#9df4c8",
+                            "on-tertiary": "#000000",
+                            "tertiary-fixed-dim": "#fcba68",
+                            "tertiary-container": "#9b671c",
+                            "surface-dim": "#0b1c30",
+                            "error": "#ffb4ab",
+                            "surface-container": "#112236",
+                            "surface": "#0b1c30",
+                            "surface-container-highest": "#213145",
+                            "surface-container-lowest": "#071321"
+                        },
+                        "borderRadius": {
+                            "DEFAULT": "1rem",
+                            "lg": "2rem",
+                            "xl": "3rem",
+                            "full": "9999px"
+                        },
+                        "spacing": {
+                            "margin-mobile": "16px",
+                            "card-padding": "2rem",
+                            "margin-desktop": "40px",
+                            "gutter": "24px",
+                            "unit": "4px",
+                            "container-max-width": "1440px"
+                        },
+                        "fontFamily": {
+                            "label-sm": ["JetBrains Mono"],
+                            "headline-lg": ["Inter"],
+                            "headline-md": ["Inter"],
+                            "display-lg": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "headline-lg-mobile": ["Inter"],
+                            "body-md": ["Inter"],
+                            "data-display": ["JetBrains Mono"]
+                        },
+                        "fontSize": {
+                            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                            "data-display": ["20px", { "lineHeight": "24px", "fontWeight": "500" }]
+                        }
+                    },
+                },
+            }
+        } catch (_e) {}
+    </script>
+<style>
+        .glass-card {
+            background: rgba(17, 34, 54, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-surface-dim min-h-screen text-on-surface selection:bg-primary-container selection:text-white">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest/80 backdrop-blur-xl border-b border-white/5 flex justify-between items-center px-margin-desktop w-full h-16 z-40 fixed top-0 left-0">
+<div class="flex items-center gap-4">
+<button aria-label="Open navigation" class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors lg:hidden" id="hamburger-btn" onclick="openDrawer()">menu</button>
+<span class="font-headline-md text-headline-md font-bold text-primary">EcoPulse IoT</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-6">
+<button class="font-body-md text-primary font-semibold">Graphs View</button>
+</div>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors">sensors</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors">wifi</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors">settings</button>
+</div>
+</div>
+</header>
+<!-- Backdrop overlay (mobile) -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden transition-opacity duration-300" id="drawer-overlay" onclick="closeDrawer()"></div>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-6 z-50 bg-surface-container-lowest/95 backdrop-blur-xl border-r border-white/5 w-72
+  -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col" id="side-nav" style="width:18rem">
+<div class="flex items-center justify-between mb-10 pt-4 lg:pt-16">
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary mb-1">Environmental Monitor</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Solo Project</p>
+</div>
+<button aria-label="Close navigation" class="material-symbols-outlined text-on-surface-variant hover:text-primary p-1 rounded-full transition-colors lg:hidden" onclick="closeDrawer()">close</button>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-white/5 hover:text-white transition-all rounded-xl active:scale-95 duration-200" href="about.html">
+<span class="material-symbols-outlined">info</span>
+<span class="font-body-md text-body-md">About</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-white/5 hover:text-white transition-all rounded-xl active:scale-95 duration-200" href="telemetry-dash-readings.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Readings</span>
+</a>
+<a class="flex items-center gap-4 p-4 bg-primary/10 text-primary font-bold rounded-xl active:scale-95 duration-200 border border-primary/20" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Graphs</span>
+</a>
+</nav>
+<div class="mt-auto space-y-6">
+<a href="https://github.com/" target="_blank"><button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:opacity-90 transition-all active:scale-95">Github Repo</button></a>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-white/10 flex-shrink-0">
+<img alt="Roshan Shorey" class="w-full h-full object-cover brightness-110" src="../assets/soloprojprofilepic.jpg"/>
+</div>
+<div>
+<a href="https://www.linkedin.com/in/roshan-shorey-418248371/" target="_blank"><p class="font-body-md text-body-md font-bold text-on-surface">Roshan Shorey</p></a>
+<p class="font-label-sm text-label-sm text-on-surface-variant">2nd Year, SVNIT Surat</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="pt-24 pb-12 px-margin-mobile lg:pl-72 lg:pr-margin-desktop min-h-screen">
+<!-- Header Text -->
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Telemetry Analysis</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Historic trends from the sensor node network.</p>
+</div>
+<!-- Graphs Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- 1. Temperature Graph -->
+<div class="glass-card rounded-2xl p-6 flex flex-col h-80">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Temperature</span>
+<span class="font-headline-md text-white"><span id="graph-temp">24.8</span> <span class="text-secondary text-sm">°C</span></span>
+</div>
+<span class="material-symbols-outlined text-secondary opacity-50">thermostat</span>
+</div>
+<div class="flex-1 w-full relative">
+<!-- VARIABLE_HOLDER: TEMPERATURE_DATA -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 60">
+<path id="svg-temp-line" d="M0 50 Q 20 20 40 45 T 100 30" fill="none" stroke="#6cf8bb" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path id="svg-temp-fill" d="M0 50 Q 20 20 40 45 T 100 30 V 60 H 0 Z" fill="rgba(108, 248, 187, 0.05)"></path>
+</svg>
+</div>
+<div class="mt-4 flex justify-between font-label-sm text-on-surface-variant">
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+</div>
+</div>
+<!-- 2. Humidity Graph -->
+<div class="glass-card rounded-2xl p-6 flex flex-col h-80">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Humidity</span>
+<span class="font-headline-md text-white"><span id="graph-hum">64</span> <span class="text-primary text-sm">%</span></span>
+</div>
+<span class="material-symbols-outlined text-primary opacity-50">water_drop</span>
+</div>
+<div class="flex-1 w-full relative">
+<!-- VARIABLE_HOLDER: HUMIDITY_DATA -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 60">
+<path id="svg-hum-line" d="M0 40 Q 25 30 50 50 T 100 20" fill="none" stroke="#b3c5ff" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path id="svg-hum-fill" d="M0 40 Q 25 30 50 50 T 100 20 V 60 H 0 Z" fill="rgba(179, 197, 255, 0.05)"></path>
+</svg>
+</div>
+<div class="mt-4 flex justify-between font-label-sm text-on-surface-variant">
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+</div>
+</div>
+<!-- 3. Air Quality Index (AQI) Graph -->
+<div class="glass-card rounded-2xl p-6 flex flex-col h-80">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Air Quality (AQI)</span>
+<span class="font-headline-md text-white"><span id="graph-aqi">42</span> <span id="graph-aqi-label" class="text-aqi-excellent text-sm">Excellent</span></span>
+</div>
+<span class="material-symbols-outlined text-aqi-excellent opacity-50">air</span>
+</div>
+<div class="flex-1 w-full relative">
+<!-- VARIABLE_HOLDER: AQI_DATA -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 60">
+<path id="svg-aqi-line" d="M0 55 L 20 40 L 40 45 L 60 30 L 80 35 L 100 25" fill="none" stroke="#6cf8bb" stroke-linecap="round" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path id="svg-aqi-fill" d="M0 55 L 20 40 L 40 45 L 60 30 L 80 35 L 100 25 V 60 H 0 Z" fill="rgba(108, 248, 187, 0.05)"></path>
+</svg>
+</div>
+<div class="mt-4 flex justify-between font-label-sm text-on-surface-variant">
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+</div>
+</div>
+<!-- 4. Barometric Pressure Graph -->
+<div class="glass-card rounded-2xl p-6 flex flex-col h-80">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Pressure</span>
+<span class="font-headline-md text-white"><span id="graph-pres">1013.2</span> <span class="text-tertiary-fixed-dim text-sm">hPa</span></span>
+</div>
+<span class="material-symbols-outlined text-tertiary opacity-50">speed</span>
+</div>
+<div class="flex-1 w-full relative">
+<!-- VARIABLE_HOLDER: PRESSURE_DATA -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 60">
+<path id="svg-pres-line" d="M0 30 Q 33 28 66 32 T 100 30" fill="none" stroke="#fcba68" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path id="svg-pres-fill" d="M0 30 Q 33 28 66 32 T 100 30 V 60 H 0 Z" fill="rgba(252, 186, 104, 0.05)"></path>
+</svg>
+</div>
+<div class="mt-4 flex justify-between font-label-sm text-on-surface-variant">
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+</div>
+</div>
+<!-- 5. Altitude Graph -->
+<div class="lg:col-span-2 glass-card rounded-2xl p-6 flex flex-col h-80">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Altitude ASL</span>
+<span class="font-headline-md text-white"><span id="graph-alt">1,245</span> <span class="text-tertiary text-sm">m</span></span>
+</div>
+<span class="material-symbols-outlined text-tertiary opacity-50">landscape</span>
+</div>
+<div class="flex-1 w-full relative px-4">
+<!-- VARIABLE_HOLDER: ALTITUDE_DATA -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 200 60">
+<path id="svg-alt-line" d="M0 50 L 20 48 L 40 51 L 60 45 L 80 46 L 100 42 L 120 44 L 140 38 L 160 40 L 180 35 L 200 37" fill="none" stroke="#fcba68" stroke-linecap="round" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path id="svg-alt-fill" d="M0 50 L 20 48 L 40 51 L 60 45 L 80 46 L 100 42 L 120 44 L 140 38 L 160 40 L 180 35 L 200 37 V 60 H 0 Z" fill="rgba(252, 186, 104, 0.05)"></path>
+</svg>
+</div>
+<div class="mt-4 flex justify-between font-label-sm text-on-surface-variant">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+</div>
+<!-- Alert / System Status -->
+<section class="mt-12">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">System Health</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="glass-card p-4 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">database</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-white">Database Sync</p>
+<p class="font-label-sm text-on-surface-variant">Last entry: 1 minute ago</p>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-white">Processing Node</p>
+<p class="font-label-sm text-on-surface-variant">Averaging 12 samples/min</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+function openDrawer(){
+  document.getElementById('side-nav').classList.remove('-translate-x-full');
+  document.getElementById('drawer-overlay').classList.remove('hidden');
+  document.body.style.overflow='hidden';
+}
+function closeDrawer(){
+  document.getElementById('side-nav').classList.add('-translate-x-full');
+  document.getElementById('drawer-overlay').classList.add('hidden');
+  document.body.style.overflow='';
+}
+// Close on Escape key
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
+// Auto-close on resize to desktop
+window.addEventListener('resize',function(){if(window.innerWidth>=1024)closeDrawer();});
+
+// REAL-TIME GRAPHS
+const MAX_POINTS = 20;
+let historyData = { temp: [], hum: [], aqi: [], pres: [], alt: [] };
+
+function updateSVG(type, value, min, max, svgWidth, autoScale = false) {
+  historyData[type].push(value);
+  if (historyData[type].length > MAX_POINTS) historyData[type].shift();
+
+  let currentMin = min;
+  let currentMax = max;
+
+  if (autoScale && historyData[type].length > 1) {
+    let vals = historyData[type];
+    let minVal = Math.min(...vals);
+    let maxVal = Math.max(...vals);
+    let padding = (maxVal - minVal) * 0.5; // generous padding
+    if (padding === 0) padding = 1;
+    currentMin = minVal - padding;
+    currentMax = maxVal + padding;
+  }
+
+  let linePath = "";
+  let fillPath = "";
+  
+  // Calculate X step
+  let step = historyData[type].length > 1 ? svgWidth / (historyData[type].length - 1) : svgWidth;
+  
+  for (let i = 0; i < historyData[type].length; i++) {
+    let val = historyData[type][i];
+    // Map value to Y coordinate (0 at top, 60 at bottom)
+    let y = 60 - ((val - currentMin) / (currentMax - currentMin) * 60);
+    if (y < 5) y = 5;
+    if (y > 55) y = 55;
+    
+    let x = i * step;
+    if (i === 0) {
+      linePath += `M ${x} ${y} `;
+      fillPath += `M ${x} ${y} `;
+    } else {
+      linePath += `L ${x} ${y} `;
+      fillPath += `L ${x} ${y} `;
+    }
+  }
+  
+  if (historyData[type].length > 0) {
+    fillPath += `V 60 H 0 Z`;
+    document.getElementById(`svg-${type}-line`).setAttribute("d", linePath);
+    document.getElementById(`svg-${type}-fill`).setAttribute("d", fillPath);
+  }
+}
+
+function updateGraphs() {
+  fetch('/api/data')
+    .then(response => response.json())
+    .then(data => {
+      // data = [Temperature, Humidity, Pressure, Altitude, AQI, Rain_ADC]
+      if(data.length >= 6) {
+        document.getElementById('graph-temp').innerText = data[0].toFixed(2);
+        document.getElementById('graph-hum').innerText = data[1].toFixed(2);
+        document.getElementById('graph-pres').innerText = data[2].toFixed(2);
+        document.getElementById('graph-alt').innerText = data[3].toFixed(2);
+        
+        // AQI Logic
+        let aqi = Math.round(data[4]);
+        document.getElementById('graph-aqi').innerText = aqi;
+        let aqiLabel = document.getElementById('graph-aqi-label');
+        if (aqi <= 50) { aqiLabel.innerText = "Excellent"; aqiLabel.className = "text-secondary text-sm font-bold uppercase"; }
+        else if (aqi <= 100) { aqiLabel.innerText = "Moderate"; aqiLabel.className = "text-yellow-500 text-sm font-bold uppercase"; }
+        else if (aqi <= 200) { aqiLabel.innerText = "Poor"; aqiLabel.className = "text-orange-500 text-sm font-bold uppercase"; }
+        else { aqiLabel.innerText = "Danger"; aqiLabel.className = "text-red-600 text-sm font-bold uppercase"; }
+
+        // Update SVGs (type, value, min, max, svgWidth, autoScale)
+        updateSVG('temp', data[0], 10, 45, 100, true);
+        updateSVG('hum', data[1], 20, 90, 100, true);
+        updateSVG('aqi', data[4], 0, 300, 100, false);
+        updateSVG('pres', data[2], 980, 1050, 100, true);
+        updateSVG('alt', data[3], 0, 2000, 200, true);
+      }
+    })
+    .catch(error => console.error('Error fetching graph data:', error));
+}
+
+// Start polling
+setInterval(updateGraphs, 3000);
+</script>
+</body></html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        try {
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        "colors": {
+                            "on-secondary-container": "#0c714d",
+                            "background": "#0b1c30",
+                            "inverse-primary": "#b3c5ff",
+                            "surface-tint": "#1155d0",
+                            "surface-bright": "#f8f9ff",
+                            "on-tertiary-container": "#fff7f1",
+                            "surface-container-low": "#112236",
+                            "on-primary-fixed": "#001849",
+                            "aqi-excellent": "#6cf8bb",
+                            "on-primary-fixed-variant": "#003fa4",
+                            "secondary": "#6cf8bb",
+                            "inverse-on-surface": "#eaf1ff",
+                            "on-error": "#ffffff",
+                            "on-tertiary-fixed-variant": "#653e00",
+                            "secondary-fixed-dim": "#81d8ad",
+                            "on-surface": "#ffffff",
+                            "primary-fixed": "#dae1ff",
+                            "on-error-container": "#93000a",
+                            "primary-fixed-dim": "#b3c5ff",
+                            "on-secondary-fixed": "#002113",
+                            "on-primary-container": "#f8f7ff",
+                            "on-surface-variant": "#c2c6d8",
+                            "primary": "#b3c5ff",
+                            "on-secondary": "#000000",
+                            "outline": "#727687",
+                            "tertiary-fixed": "#ffddb8",
+                            "on-secondary-fixed-variant": "#005236",
+                            "surface-variant": "#213145",
+                            "error-container": "#ffdad6",
+                            "tertiary": "#fcba68",
+                            "outline-variant": "#424656",
+                            "secondary-container": "#006c49",
+                            "surface-container-high": "#1e2f47",
+                            "primary-container": "#1155d0",
+                            "inverse-surface": "#eaf1ff",
+                            "on-primary": "#001849",
+                            "on-tertiary-fixed": "#2a1700",
+                            "on-background": "#ffffff",
+                            "secondary-fixed": "#9df4c8",
+                            "on-tertiary": "#000000",
+                            "tertiary-fixed-dim": "#fcba68",
+                            "tertiary-container": "#9b671c",
+                            "surface-dim": "#0b1c30",
+                            "error": "#ffb4ab",
+                            "surface-container": "#112236",
+                            "surface": "#0b1c30",
+                            "surface-container-highest": "#213145",
+                            "surface-container-lowest": "#071321"
+                        },
+                        "borderRadius": {
+                            "DEFAULT": "1rem",
+                            "lg": "2rem",
+                            "xl": "3rem",
+                            "full": "9999px"
+                        },
+                        "spacing": {
+                            "margin-mobile": "16px",
+                            "card-padding": "2rem",
+                            "margin-desktop": "40px",
+                            "gutter": "24px",
+                            "unit": "4px",
+                            "container-max-width": "1440px"
+                        },
+                        "fontFamily": {
+                            "label-sm": ["JetBrains Mono"],
+                            "headline-lg": ["Inter"],
+                            "headline-md": ["Inter"],
+                            "display-lg": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "headline-lg-mobile": ["Inter"],
+                            "body-md": ["Inter"],
+                            "data-display": ["JetBrains Mono"]
+                        },
+                        "fontSize": {
+                            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                            "data-display": ["20px", { "lineHeight": "24px", "fontWeight": "500" }]
+                        }
+                    },
+                },
+            }
+        } catch (_e) {}
+    </script>
+<style>
+        .glass-card {
+            background: rgba(17, 34, 54, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-surface-dim min-h-screen text-on-surface selection:bg-primary-container selection:text-white">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest/80 backdrop-blur-xl border-b border-white/5 flex justify-between items-center px-margin-desktop w-full h-16 z-40 fixed top-0 left-0">
+<div class="flex items-center gap-4">
+<button aria-label="Open navigation" class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors lg:hidden" id="hamburger-btn" onclick="openDrawer()">menu</button>
+<span class="font-headline-md text-headline-md font-bold text-primary">EcoPulse IoT</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-6">
+<button class="font-headline-md text-headline-md font-bold text-primary transition-opacity hover:opacity-80">Dashboard</button>
+</div>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors">sensors</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors">wifi</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors">schedule</button>
+</div>
+</div>
+</header>
+<!-- Backdrop overlay (mobile) -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden transition-opacity duration-300" id="drawer-overlay" onclick="closeDrawer()"></div>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-6 z-50 bg-surface-container-lowest/95 backdrop-blur-xl border-r border-white/5
+  -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out" id="side-nav" style="width:18rem">
+<div class="flex items-center justify-between mb-10 pt-4 lg:pt-16">
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary mb-1">Environmental Monitor</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Solo Project</p>
+</div>
+<button aria-label="Close navigation" class="material-symbols-outlined text-on-surface-variant hover:text-primary p-1 rounded-full transition-colors lg:hidden" onclick="closeDrawer()">close</button>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-white/5 hover:text-white transition-all rounded-xl active:scale-95 duration-200" href="about.html">
+<span class="material-symbols-outlined">info</span>
+<span class="font-body-md text-body-md">About</span>
+</a>
+<a class="flex items-center gap-4 p-4 bg-primary/10 text-primary font-bold rounded-xl active:scale-95 duration-200 border border-primary/20" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Readings</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-white/5 hover:text-white transition-all rounded-xl active:scale-95 duration-200" href="telemetry-dash(graphs).html">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Graphs</span>
+</a>
+</nav>
+<div class="mt-auto space-y-6">
+<a href="https://github.com/" target="_blank"><button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary/90 transition-all active:scale-95">Github Repo</button></a>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-white/10 flex-shrink-0">
+<img alt="Roshan Shorey" class="w-full h-full object-cover brightness-110" src="../assets/soloprojprofilepic.jpg"/>
+</div>
+<div>
+<a href="https://www.linkedin.com/in/roshan-shorey-418248371/" target="_blank"><p class="font-body-md text-body-md font-bold text-on-surface">Roshan Shorey</p></a>
+<div class="font-label-sm text-label-sm text-on-surface-variant">2nd Year, SVNIT Surat</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="pt-24 pb-12 px-margin-mobile lg:pl-72 lg:pr-margin-desktop min-h-screen">
+<!-- Header Text -->
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Sensor Readings</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Current environmental telemetry from Alpine Valley sensor array.</p>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- 1. Temperature -->
+<div class="glass-card rounded-[32px] p-8 flex flex-col justify-between min-h-[220px]">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-4">Ambient Temperature</span>
+<span class="material-symbols-outlined text-secondary opacity-50">thermostat</span>
+</div>
+<div class="flex items-baseline gap-2">
+<!-- VARIABLE_HOLDER: temperature -->
+<span id="val-temp" class="font-display-lg text-6xl text-white">24.8</span>
+<span class="font-headline-md text-headline-md text-secondary">°C</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-white/5">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold tracking-tighter">Normal Range</span>
+</div>
+</div>
+<!-- 2. Relative Humidity -->
+<div class="glass-card rounded-[32px] p-8 flex flex-col justify-between min-h-[220px]">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-4">Relative Humidity</span>
+<span class="material-symbols-outlined text-primary opacity-50">water_drop</span>
+</div>
+<div class="flex items-baseline gap-2">
+<!-- VARIABLE_HOLDER: humidity -->
+<span id="val-hum" class="font-display-lg text-6xl text-white">64</span>
+<span class="font-data-display text-data-display text-primary/60">%</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-white/5">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-tighter">Stable Environment</span>
+</div>
+</div>
+<!-- 3. Air Quality Index -->
+<div class="glass-card rounded-[32px] p-8 flex flex-col justify-between min-h-[220px]">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-4">Air Quality Index</span>
+<span class="material-symbols-outlined text-secondary opacity-50">air</span>
+</div>
+<div class="flex items-baseline gap-2">
+<!-- VARIABLE_HOLDER: aqi -->
+<span id="val-aqi" class="font-display-lg text-6xl text-white">42</span>
+<span id="val-aqi-label" class="font-label-sm text-label-sm px-2 py-0.5 bg-secondary text-on-secondary rounded font-bold uppercase ml-2">Excellent</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-white/5">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-tighter">Healthy Conditions</span>
+</div>
+</div>
+<!-- 4. Barometric Pressure -->
+<div class="glass-card rounded-[32px] p-8 flex flex-col justify-between min-h-[220px]">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-4">Baro Pressure</span>
+<span class="material-symbols-outlined text-tertiary-fixed-dim opacity-50">compress</span>
+</div>
+<div class="flex items-baseline gap-2">
+<!-- VARIABLE_HOLDER: pressure -->
+<span id="val-pres" class="font-display-lg text-5xl text-white">1013.2</span>
+<span class="font-label-sm text-on-surface-variant ml-1 font-bold">hPa</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-white/5">
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase font-bold tracking-tighter">Stable Pressure</span>
+</div>
+</div>
+<!-- 5. Altitude -->
+<div class="glass-card rounded-[32px] p-8 flex flex-col justify-between min-h-[220px]">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-4">Altitude</span>
+<span class="material-symbols-outlined text-tertiary opacity-50">landscape</span>
+</div>
+<div class="flex items-baseline gap-2">
+<!-- VARIABLE_HOLDER: altitude -->
+<span id="val-alt" class="font-display-lg text-5xl text-white">1,245</span>
+<span class="font-body-md text-on-surface-variant ml-1 font-bold">m</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-white/5">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-tighter">ASL Reading</span>
+</div>
+</div>
+<!-- 6. Rain Sensor -->
+<div class="glass-card rounded-[32px] p-8 flex flex-col justify-between min-h-[220px]">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-4">Rain Sensor</span>
+<span class="material-symbols-outlined text-secondary opacity-50">rainy</span>
+</div>
+<div class="flex items-baseline gap-2">
+<!-- VARIABLE_HOLDER: is_raining -->
+<span id="val-rain" class="font-display-lg text-6xl text-white">No</span>
+<span id="val-rain-label" class="font-body-md text-on-surface-variant ml-2 font-bold opacity-60">Rain</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-white/5">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-tighter">Dry Surface</span>
+</div>
+</div>
+</div>
+<!-- System Alerts -->
+<section class="mt-12">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Recent Node Activity</h3>
+<div class="space-y-4">
+<div class="glass-card p-4 rounded-2xl flex items-center justify-between border-l-4 border-secondary/60">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-white">Calibration Successful</p>
+<p class="font-label-sm text-on-surface-variant">Node #042 successfully recalibrated humidity sensor.</p>
+</div>
+</div>
+<span class="font-label-sm text-on-surface-variant">2 mins ago</span>
+</div>
+<div class="glass-card p-4 rounded-2xl flex items-center justify-between border-l-4 border-primary/60">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">cloud_sync</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-white">Data Burst Transmitted</p>
+<p class="font-label-sm text-on-surface-variant">Full environment telemetry sent to Central Cloud Server.</p>
+</div>
+</div>
+<span class="font-label-sm text-on-surface-variant">14 mins ago</span>
+</div>
+</div>
+</section>
+</main>
+<script>
+function openDrawer(){
+  document.getElementById('side-nav').classList.remove('-translate-x-full');
+  document.getElementById('drawer-overlay').classList.remove('hidden');
+  document.body.style.overflow='hidden';
+}
+function closeDrawer(){
+  document.getElementById('side-nav').classList.add('-translate-x-full');
+  document.getElementById('drawer-overlay').classList.add('hidden');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
+window.addEventListener('resize',function(){if(window.innerWidth>=1024)closeDrawer();});
+
+// REAL-TIME DATA FETCHING
+function updateDashboard() {
+  fetch('/api/data')
+    .then(response => response.json())
+    .then(data => {
+      // data = [Temperature, Humidity, Pressure, Altitude, AQI, Rain_ADC]
+      if(data.length >= 6) {
+        document.getElementById('val-temp').innerText = data[0].toFixed(2);
+        document.getElementById('val-hum').innerText = data[1].toFixed(2);
+        document.getElementById('val-pres').innerText = data[2].toFixed(2);
+        document.getElementById('val-alt').innerText = data[3].toFixed(2);
+        
+        // AQI Logic
+        let aqi = Math.round(data[4]);
+        document.getElementById('val-aqi').innerText = aqi;
+        let aqiLabel = document.getElementById('val-aqi-label');
+        if (aqi <= 50) { aqiLabel.innerText = "Excellent"; aqiLabel.className = "font-label-sm text-label-sm px-2 py-0.5 bg-secondary text-on-secondary rounded font-bold uppercase ml-2"; }
+        else if (aqi <= 100) { aqiLabel.innerText = "Moderate"; aqiLabel.className = "font-label-sm text-label-sm px-2 py-0.5 bg-yellow-500 text-black rounded font-bold uppercase ml-2"; }
+        else if (aqi <= 200) { aqiLabel.innerText = "Poor"; aqiLabel.className = "font-label-sm text-label-sm px-2 py-0.5 bg-orange-500 text-white rounded font-bold uppercase ml-2"; }
+        else { aqiLabel.innerText = "Danger"; aqiLabel.className = "font-label-sm text-label-sm px-2 py-0.5 bg-red-600 text-white rounded font-bold uppercase ml-2"; }
+
+        // Rain Logic
+        let rainAdc = data[5];
+        let rainVal = document.getElementById('val-rain');
+        let rainLabel = document.getElementById('val-rain-label');
+        if (rainAdc >= 4000) { rainVal.innerText = "Clear"; rainLabel.innerText = "Skies"; }
+        else if (rainAdc >= 3200) { rainVal.innerText = "Mist"; rainLabel.innerText = "Drizzling"; }
+        else if (rainAdc >= 2200) { rainVal.innerText = "Light"; rainLabel.innerText = "Rain"; }
+        else if (rainAdc >= 1000) { rainVal.innerText = "Heavy"; rainLabel.innerText = "Shower"; }
+        else { rainVal.innerText = "Flood"; rainLabel.innerText = "Risk"; }
+      }
+    })
+    .catch(error => console.error('Error fetching sensor data:', error));
+}
+
+// Fetch immediately, then every 3 seconds
+updateDashboard();
+setInterval(updateDashboard, 3000);
+</script>
+</body></html>
