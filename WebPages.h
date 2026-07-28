@@ -346,6 +346,7 @@ const char* PAGE_HERO PROGMEM = R"rawliteral(
 </script>
 </body>
 </html>
+
 )rawliteral";
 
 const char* PAGE_ABOUT PROGMEM = R"rawliteral(
@@ -469,8 +470,9 @@ const char* PAGE_ABOUT PROGMEM = R"rawliteral(
 </div>
 <div class="flex items-center gap-6">
 <div class="hidden md:flex gap-6">
-<button class="font-headline-md text-headline-md font-bold text-primary transition-opacity hover:opacity-80">Dashboard</button>
-</div>
+  <a href="about.html">
+<button class="font-headline-md text-headline-md font-bold text-primary transition-opacity hover:opacity-80" >Dashboard</button>
+  </a></div>
 <div class="flex gap-4">
 <button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors">sensors</button>
 <button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors">wifi</button>
@@ -505,20 +507,20 @@ const char* PAGE_ABOUT PROGMEM = R"rawliteral(
 </a>
 </nav>
 <div class="mt-auto space-y-6">
-<a href="https://github.com/" target="_blank"><button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary/90 transition-all active:scale-95">Github Repo</button></a>
+<a href="https://github.com/roshanhere-dev/multi-featured-localised-environmental-monitor-Soloproj-.git" target="_blank"><button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary/90 transition-all active:scale-95">Github Repo</button></a>
 <div class="flex items-center gap-3">
 <div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-white/10 flex-shrink-0">
 <img alt="Roshan Shorey" class="w-full h-full object-cover brightness-110" src="../assets/soloprojprofilepic.jpg"/>
 </div>
 <div>
 <a href="https://www.linkedin.com/in/roshan-shorey-418248371/" target="_blank"><p class="font-body-md text-body-md font-bold text-on-surface">Roshan Shorey</p></a>
-<div class="font-label-sm text-label-sm text-on-surface-variant">2nd Year, SVNIT Surat</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">1st Year, SVNIT Surat</div>
 </div>
 </div>
 </div>
 </aside>
 <!-- Main Content -->
-<main class="pt-24 pb-16 px-margin-mobile lg:pl-72 lg:pr-margin-desktop min-h-screen">
+<main class="pt-24 pb-16 px-margin-mobile lg:pl-80 lg:pr-margin-desktop min-h-screen">
 
   <!-- Hero Header -->
   <div class="mb-12">
@@ -926,7 +928,9 @@ const char* PAGE_READINGS PROGMEM = R"rawliteral(
 </div>
 <div class="flex items-center gap-6">
 <div class="hidden md:flex gap-6">
-<button class="font-headline-md text-headline-md font-bold text-primary transition-opacity hover:opacity-80">Dashboard</button>
+<a href="about.html">
+<button class="font-headline-md text-headline-md font-bold text-primary transition-opacity hover:opacity-80" >Dashboard</button>
+  </a>
 </div>
 <div class="flex gap-4">
 <button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors">sensors</button>
@@ -962,24 +966,24 @@ const char* PAGE_READINGS PROGMEM = R"rawliteral(
 </a>
 </nav>
 <div class="mt-auto space-y-6">
-<a href="https://github.com/" target="_blank"><button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary/90 transition-all active:scale-95">Github Repo</button></a>
+<a href="https://github.com/roshanhere-dev/multi-featured-localised-environmental-monitor-Soloproj-.git" target="_blank"><button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary/90 transition-all active:scale-95">Github Repo</button></a>
 <div class="flex items-center gap-3">
 <div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-white/10 flex-shrink-0">
 <img alt="Roshan Shorey" class="w-full h-full object-cover brightness-110" src="../assets/soloprojprofilepic.jpg"/>
 </div>
 <div>
 <a href="https://www.linkedin.com/in/roshan-shorey-418248371/" target="_blank"><p class="font-body-md text-body-md font-bold text-on-surface">Roshan Shorey</p></a>
-<div class="font-label-sm text-label-sm text-on-surface-variant">2nd Year, SVNIT Surat</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">1st Year, SVNIT Surat</div>
 </div>
 </div>
 </div>
 </aside>
 <!-- Main Content -->
-<main class="pt-24 pb-12 px-margin-mobile lg:pl-72 lg:pr-margin-desktop min-h-screen">
+<main class="pt-24 pb-12 px-margin-mobile lg:pl-80 lg:pr-margin-desktop min-h-screen">
 <!-- Header Text -->
 <div class="mb-8">
 <h2 class="font-headline-lg text-headline-lg text-on-surface">Sensor Readings</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Current environmental telemetry from Alpine Valley sensor array.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Current environmental telemetry from Alpine Valley sensor array.( Real-time Readings Shall Reflect Once Hardware Wireless Communication is established )</p>
 </div>
 <!-- Bento Grid -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1330,24 +1334,24 @@ const char* PAGE_GRAPHS PROGMEM = R"rawliteral(
 </a>
 </nav>
 <div class="mt-auto space-y-6">
-<a href="https://github.com/" target="_blank"><button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:opacity-90 transition-all active:scale-95">Github Repo</button></a>
+<a href="https://github.com/roshanhere-dev/multi-featured-localised-environmental-monitor-Soloproj-.git" target="_blank"><button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:opacity-90 transition-all active:scale-95">Github Repo</button></a>
 <div class="flex items-center gap-3">
 <div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-white/10 flex-shrink-0">
 <img alt="Roshan Shorey" class="w-full h-full object-cover brightness-110" src="../assets/soloprojprofilepic.jpg"/>
 </div>
 <div>
 <a href="https://www.linkedin.com/in/roshan-shorey-418248371/" target="_blank"><p class="font-body-md text-body-md font-bold text-on-surface">Roshan Shorey</p></a>
-<p class="font-label-sm text-label-sm text-on-surface-variant">2nd Year, SVNIT Surat</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">1st Year, SVNIT Surat</p>
 </div>
 </div>
 </div>
 </aside>
 <!-- Main Content -->
-<main class="pt-24 pb-12 px-margin-mobile lg:pl-72 lg:pr-margin-desktop min-h-screen">
+<main class="pt-24 pb-12 px-margin-mobile lg:pl-80 lg:pr-margin-desktop min-h-screen">
 <!-- Header Text -->
 <div class="mb-8">
 <h2 class="font-headline-lg text-headline-lg text-on-surface">Telemetry Analysis</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Historic trends from the sensor node network.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Historic trends from the sensor node network.(Real-Time Graphs Shall Reflect Once Hardware Wireless Connection Is Successfully Established. )  </p>
 </div>
 <!-- Graphs Grid -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

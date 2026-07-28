@@ -1,7 +1,7 @@
 import os
 
 html_files = {
-    'PAGE_HERO': 'src/Software/Hero-page-screen1.html',
+    'PAGE_HERO': 'src/Software/index.html',
     'PAGE_ABOUT': 'src/Software/about.html',
     'PAGE_READINGS': 'src/Software/telemetry-dash-readings.html',
     'PAGE_GRAPHS': 'src/Software/telemetry-dash(graphs).html'
