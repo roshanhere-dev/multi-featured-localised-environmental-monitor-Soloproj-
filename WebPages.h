@@ -529,7 +529,7 @@ const char* PAGE_ABOUT PROGMEM = R"rawliteral(
       <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Solo IoT Project</span>
     </div>
     <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">ESP32 Smart Environmental Dashboard</h2>
-    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">An advanced, IoT-enabled environmental telemetry station built on the ESP32 microcontroller. Integrates the BME280 Climate Sensor, MQ135 Gas Sensor (with localized baseline calibration), and an LM393 Rain Sensor to serve an interactive, live web dashboard with real-time data visualization and side-by-side localized comparison analytics against official municipal meteorological data.</p>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">An advanced, IoT-enabled environmental telemetry station built on the ESP32 microcontroller. Integrates the BME280 Climate Sensor, MQ135 Gas Sensor (with localized baseline calibration), and a Rain Sensor through an LM393 Comparator to serve an interactive, live web dashboard with real-time data visualization and side-by-side localized comparison analytics against official municipal meteorological data.</p>
   </div>
 
   <!-- Key Features -->
@@ -537,25 +537,18 @@ const char* PAGE_ABOUT PROGMEM = R"rawliteral(
     <h3 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-3">
       <span class="material-symbols-outlined text-primary">rocket_launch</span> Key Features
     </h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
-        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-          <span class="material-symbols-outlined text-primary text-xl">compare_arrows</span>
-        </div>
-        <div>
-          <p class="font-body-md font-bold text-on-surface mb-1">Micro-Local vs. Macro-Metro Comparison API</p>
-          <p class="font-label-sm text-label-sm text-on-surface-variant">Automatically fetches official real-time meteorological data for Kalyan from public APIs (OpenWeatherMap / WAQI) and displays it side-by-side with your physical breadboard telemetry.</p>
-        </div>
-      </div>
+    
       <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
         <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
           <span class="material-symbols-outlined text-secondary text-xl">show_chart</span>
         </div>
+        
         <div>
           <p class="font-body-md font-bold text-on-surface mb-1">Dynamic Real-Time Charts &amp; Graphs</p>
           <p class="font-label-sm text-label-sm text-on-surface-variant">Diversified line charts, trend vectors, and dynamic radial gauges visualize localized telemetry trends natively inside the browser, updating asynchronously via WebSockets or Server-Sent Events.</p>
         </div>
       </div>
+      <span>&nbsp;</span>
       <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
         <div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center flex-shrink-0">
           <span class="material-symbols-outlined text-tertiary text-xl">thermostat</span>
@@ -565,6 +558,7 @@ const char* PAGE_ABOUT PROGMEM = R"rawliteral(
           <p class="font-label-sm text-label-sm text-on-surface-variant">Collects highly accurate temperature, relative humidity, and local barometric pressure over the digital I&#178;C protocol using three distinct micromachined sensing elements.</p>
         </div>
       </div>
+      <span>&nbsp;</span>
       <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
         <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
           <span class="material-symbols-outlined text-primary text-xl">air</span>
@@ -574,6 +568,7 @@ const char* PAGE_ABOUT PROGMEM = R"rawliteral(
           <p class="font-label-sm text-label-sm text-on-surface-variant">Converts raw analog values from the MQ135 into a scaled Air Quality Index based on localized city baselines (Kalyan = 97), bypassing non-linear curve limitations of raw metal-oxide resistance.</p>
         </div>
       </div>
+      <span>&nbsp;</span>
       <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
         <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
           <span class="material-symbols-outlined text-secondary text-xl">rainy</span>
@@ -583,6 +578,7 @@ const char* PAGE_ABOUT PROGMEM = R"rawliteral(
           <p class="font-label-sm text-label-sm text-on-surface-variant">Maps real-time soil/precipitation conductivity from the LM393 probe, scaling precipitation levels from dry to torrential downpours in real time.</p>
         </div>
       </div>
+      <span>&nbsp;</span>
       <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
         <div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center flex-shrink-0">
           <span class="material-symbols-outlined text-tertiary text-xl">electric_bolt</span>
@@ -642,8 +638,8 @@ const char* PAGE_ABOUT PROGMEM = R"rawliteral(
           </div>
         </div>
         <div class="bg-primary/5 border border-primary/15 rounded-xl p-4">
-          <p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">Calibration Anchor Formula (Kalyan Municipal AQI Baseline = 97)</p>
-          <code class="font-label-sm text-label-sm text-secondary block bg-black/20 px-4 py-2 rounded-lg mb-2">Multiplier = Local Municipal AQI (97) &#247; Steady-State Raw ADC Reading</code>
+          <p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">Calibration Anchor Formula (Kalyan Municipal AQI Baseline = 51)</p>
+          <code class="font-label-sm text-label-sm text-secondary block bg-black/20 px-4 py-2 rounded-lg mb-2">Multiplier = Local Municipal AQI (51) &#247; Steady-State Raw ADC Reading</code>
           <code class="font-label-sm text-label-sm text-primary block bg-black/20 px-4 py-2 rounded-lg">Calculated AQI = Raw ADC Value &#215; Multiplier</code>
         </div>
       </div>
@@ -658,20 +654,20 @@ const char* PAGE_ABOUT PROGMEM = R"rawliteral(
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
       <div class="glass-card rounded-2xl p-6">
         <p class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest mb-4">MQ135 — Analog Voltage Divider (5V &#8594; 3.3V ADC Safe)</p>
-        <pre class="font-label-sm text-label-sm text-on-surface-variant bg-black/30 rounded-xl p-4 overflow-x-auto leading-relaxed border border-white/5">ESP32                      MQ135
-&#9472;&#9472;&#9472;&#9472;&#9472;                      &#9472;&#9472;&#9472;&#9472;&#9472;
-VIN (5V USB) &#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9654; VCC (5V)
-GND &#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9654; GND
+        <pre class="font-label-sm text-label-sm text-on-surface-variant bg-black/30 rounded-xl p-4 overflow-x-auto leading-relaxed border border-white/5">ESP32                        MQ135
+─────                        ─────
+VIN (5V USB) ──────────────▶ VCC (5V)
+GND ───────────────────────▶ GND
 
-              AO Out &#9658;&#9658; [Row A]
-                             &#9474;
-                        [1k&#937; R1]
-                             &#9474;
-GPIO 34 (ADC) &#9668;&#9668;&#9668;&#9668; [Row B]
-                             &#9474;
-                        [1k&#937; R2 + R3]
-                             &#9474;
-GND &#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668; [Row C &#9658; GND Rail]</pre>
+              AO Out ──────▶ [Row A]
+                                │
+                            [1kΩ R1]
+                                │
+GPIO 34 (ADC) ◀───────────── [Row B]
+                                │
+                          [1kΩ R2 + R3]
+                                │
+GND ◀─────────────────────── [Row C ──▶ GND Rail]</pre>
       </div>
       <div class="glass-card rounded-2xl p-6">
         <p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-4">BME280 — Digital I&#178;C (3.3V Native) + Rain Sensor</p>
@@ -696,23 +692,23 @@ GND &#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654
       <span class="material-symbols-outlined text-primary">account_tree</span> Live Web Interface &amp; Data Flow Topology
     </h3>
     <div class="glass-card rounded-2xl p-6 mb-5">
-      <pre class="font-label-sm text-label-sm text-on-surface-variant bg-black/30 rounded-xl p-5 overflow-x-auto leading-loose border border-white/5">&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;  I&#178;C (Digital)    &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
-&#9474; BME280 Sensor  &#9474; &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9654; &#9474;                 &#9474;
-&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                  &#9474;   ESP32           &#9474;
-&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;  Analog 0&#9472;3.3V  &#9474;   Micro-Server    &#9474;
-&#9474; MQ135 (div.)  &#9474; &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9654; &#9474;                 &#9474;
-&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                  &#9474;                 &#9474;
-&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;  Analog 0&#9472;3.3V  &#9474;                 &#9474;
-&#9474; Rain Sensor   &#9474; &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9654; &#9474;                 &#9474;
-&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                  &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
-                                           &#9474;
-                                    Wi-Fi / WebSockets
-                                           &#8595;
-&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;                  &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
-&#9474; Public Cloud  &#9474;                  &#9474;  Web Browser   &#9474;
-&#9474; Weather API   &#9474; &#9668;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; &#9474;  Client Portal  &#9474;
-&#9474; Metro Base.   &#9474;  JSON fetch(GET) &#9474;  (Live Charts)  &#9474;
-&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                  &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</pre>
+      <pre class="font-label-sm text-label-sm text-on-surface-variant bg-black/30 rounded-xl p-5 overflow-x-auto leading-loose border border-white/5">┌────────────────┐  I²C (Digital)   ┌─────────────────┐
+│ BME280 Sensor  │ ───────────────▶ │                 │
+└────────────────┘                  │      ESP32      │
+┌────────────────┐  Analog 0-3.3V   │   Micro-Server  │
+│ MQ135 (div.)   │ ───────────────▶ │                 │
+└────────────────┘                  │                 │
+┌────────────────┐  Analog 0-3.3V   │                 │
+│ Rain Sensor    │ ───────────────▶ │                 │
+└────────────────┘                  └─────────────────┘
+                                             │
+                                     Wi-Fi / WebSockets
+                                             ▼
+┌────────────────┐                  ┌─────────────────┐
+│ Public Cloud   │                  │   Web Browser   │
+│ Weather API    │ ◀─────────────── │  Client Portal  │
+│ Metro Base.    │  JSON fetch(GET) │  (Live Charts)  │
+└────────────────┘                  └─────────────────┘</pre>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       <div class="glass-card rounded-xl p-5 border-t-2 border-primary/40">

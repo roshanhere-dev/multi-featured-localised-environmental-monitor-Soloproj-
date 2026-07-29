@@ -177,7 +177,7 @@
       <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Solo IoT Project</span>
     </div>
     <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">ESP32 Smart Environmental Dashboard</h2>
-    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">An advanced, IoT-enabled environmental telemetry station built on the ESP32 microcontroller. Integrates the BME280 Climate Sensor, MQ135 Gas Sensor (with localized baseline calibration), and an LM393 Rain Sensor to serve an interactive, live web dashboard with real-time data visualization and side-by-side localized comparison analytics against official municipal meteorological data.</p>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">An advanced, IoT-enabled environmental telemetry station built on the ESP32 microcontroller. Integrates the BME280 Climate Sensor, MQ135 Gas Sensor (with localized baseline calibration), and a Rain Sensor through an LM393 Comparator to serve an interactive, live web dashboard with real-time data visualization and side-by-side localized comparison analytics against official municipal meteorological data.</p>
   </div>
 
   <!-- Key Features -->
@@ -185,25 +185,18 @@
     <h3 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-3">
       <span class="material-symbols-outlined text-primary">rocket_launch</span> Key Features
     </h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
-        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-          <span class="material-symbols-outlined text-primary text-xl">compare_arrows</span>
-        </div>
-        <div>
-          <p class="font-body-md font-bold text-on-surface mb-1">Micro-Local vs. Macro-Metro Comparison API</p>
-          <p class="font-label-sm text-label-sm text-on-surface-variant">Automatically fetches official real-time meteorological data for Kalyan from public APIs (OpenWeatherMap / WAQI) and displays it side-by-side with your physical breadboard telemetry.</p>
-        </div>
-      </div>
+    
       <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
         <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
           <span class="material-symbols-outlined text-secondary text-xl">show_chart</span>
         </div>
+        
         <div>
           <p class="font-body-md font-bold text-on-surface mb-1">Dynamic Real-Time Charts &amp; Graphs</p>
           <p class="font-label-sm text-label-sm text-on-surface-variant">Diversified line charts, trend vectors, and dynamic radial gauges visualize localized telemetry trends natively inside the browser, updating asynchronously via WebSockets or Server-Sent Events.</p>
         </div>
       </div>
+      <span>&nbsp;</span>
       <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
         <div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center flex-shrink-0">
           <span class="material-symbols-outlined text-tertiary text-xl">thermostat</span>
@@ -213,6 +206,7 @@
           <p class="font-label-sm text-label-sm text-on-surface-variant">Collects highly accurate temperature, relative humidity, and local barometric pressure over the digital I&#178;C protocol using three distinct micromachined sensing elements.</p>
         </div>
       </div>
+      <span>&nbsp;</span>
       <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
         <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
           <span class="material-symbols-outlined text-primary text-xl">air</span>
@@ -222,6 +216,7 @@
           <p class="font-label-sm text-label-sm text-on-surface-variant">Converts raw analog values from the MQ135 into a scaled Air Quality Index based on localized city baselines (Kalyan = 97), bypassing non-linear curve limitations of raw metal-oxide resistance.</p>
         </div>
       </div>
+      <span>&nbsp;</span>
       <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
         <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
           <span class="material-symbols-outlined text-secondary text-xl">rainy</span>
@@ -231,6 +226,7 @@
           <p class="font-label-sm text-label-sm text-on-surface-variant">Maps real-time soil/precipitation conductivity from the LM393 probe, scaling precipitation levels from dry to torrential downpours in real time.</p>
         </div>
       </div>
+      <span>&nbsp;</span>
       <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
         <div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center flex-shrink-0">
           <span class="material-symbols-outlined text-tertiary text-xl">electric_bolt</span>
@@ -238,6 +234,43 @@
         <div>
           <p class="font-body-md font-bold text-on-surface mb-1">Safe Electrical Topology</p>
           <p class="font-label-sm text-label-sm text-on-surface-variant">Series voltage divider protects the ESP32's 3.3&#8239;V ADC from the MQ135's native 5&#8239;V signaling. PWM drives physical hazard-alert LEDs with high-frequency blink alarms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Gallery -->
+  <section class="mb-12">
+    <h3 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-3">
+      <span class="material-symbols-outlined text-primary">collections_bookmark</span> Project Gallery
+    </h3>
+    <p class="font-body-md text-on-surface-variant mb-6 max-w-3xl">A behind-the-scenes look at the hardware prototyping, wiring, and final assembly of the environmental monitor.</p>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <!-- Main Video (Large) -->
+      <div class="glass-card rounded-2xl overflow-hidden group border border-white/5 relative aspect-video lg:aspect-auto lg:h-[400px] lg:col-span-2 cursor-pointer shadow-lg" onclick="openLightbox(this)">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+          <span class="material-symbols-outlined text-white text-5xl drop-shadow-md">zoom_in</span>
+        </div>
+        <video src="../assets/test video.mp4" autoplay loop muted playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"></video> 
+      </div>
+
+      <!-- Side Images Stack -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5 lg:h-[400px]">
+        <!-- Image 1 -->
+        <div class="glass-card rounded-2xl overflow-hidden group border border-white/5 relative aspect-video lg:aspect-auto lg:h-[190px] cursor-pointer shadow-lg" onclick="openLightbox(this)">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+            <span class="material-symbols-outlined text-white text-4xl drop-shadow-md">zoom_in</span>
+          </div>
+          <img src="../assets/overview-pic.jpeg" alt="Overview" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        </div>
+        
+        <!-- Image 2 -->
+        <div class="glass-card rounded-2xl overflow-hidden group border border-white/5 relative aspect-video lg:aspect-auto lg:h-[190px] cursor-pointer shadow-lg" onclick="openLightbox(this)">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+            <span class="material-symbols-outlined text-white text-4xl drop-shadow-md">zoom_in</span>
+          </div>
+          <img src="../assets/test image.jpeg" alt="Testing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
         </div>
       </div>
     </div>
@@ -290,8 +323,8 @@
           </div>
         </div>
         <div class="bg-primary/5 border border-primary/15 rounded-xl p-4">
-          <p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">Calibration Anchor Formula (Kalyan Municipal AQI Baseline = 97)</p>
-          <code class="font-label-sm text-label-sm text-secondary block bg-black/20 px-4 py-2 rounded-lg mb-2">Multiplier = Local Municipal AQI (97) &#247; Steady-State Raw ADC Reading</code>
+          <p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">Calibration Anchor Formula (Kalyan Municipal AQI Baseline = 51)</p>
+          <code class="font-label-sm text-label-sm text-secondary block bg-black/20 px-4 py-2 rounded-lg mb-2">Multiplier = Local Municipal AQI (51) &#247; Steady-State Raw ADC Reading</code>
           <code class="font-label-sm text-label-sm text-primary block bg-black/20 px-4 py-2 rounded-lg">Calculated AQI = Raw ADC Value &#215; Multiplier</code>
         </div>
       </div>
@@ -306,20 +339,20 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
       <div class="glass-card rounded-2xl p-6">
         <p class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest mb-4">MQ135 — Analog Voltage Divider (5V &#8594; 3.3V ADC Safe)</p>
-        <pre class="font-label-sm text-label-sm text-on-surface-variant bg-black/30 rounded-xl p-4 overflow-x-auto leading-relaxed border border-white/5">ESP32                      MQ135
-&#9472;&#9472;&#9472;&#9472;&#9472;                      &#9472;&#9472;&#9472;&#9472;&#9472;
-VIN (5V USB) &#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9654; VCC (5V)
-GND &#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9644;&#9654; GND
+        <pre class="font-label-sm text-label-sm text-on-surface-variant bg-black/30 rounded-xl p-4 overflow-x-auto leading-relaxed border border-white/5">ESP32                        MQ135
+─────                        ─────
+VIN (5V USB) ──────────────▶ VCC (5V)
+GND ───────────────────────▶ GND
 
-              AO Out &#9658;&#9658; [Row A]
-                             &#9474;
-                        [1k&#937; R1]
-                             &#9474;
-GPIO 34 (ADC) &#9668;&#9668;&#9668;&#9668; [Row B]
-                             &#9474;
-                        [1k&#937; R2 + R3]
-                             &#9474;
-GND &#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668;&#9668; [Row C &#9658; GND Rail]</pre>
+              AO Out ──────▶ [Row A]
+                                │
+                            [1kΩ R1]
+                                │
+GPIO 34 (ADC) ◀───────────── [Row B]
+                                │
+                          [1kΩ R2 + R3]
+                                │
+GND ◀─────────────────────── [Row C ──▶ GND Rail]</pre>
       </div>
       <div class="glass-card rounded-2xl p-6">
         <p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-4">BME280 — Digital I&#178;C (3.3V Native) + Rain Sensor</p>
@@ -344,29 +377,29 @@ GND &#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654
       <span class="material-symbols-outlined text-primary">account_tree</span> Live Web Interface &amp; Data Flow Topology
     </h3>
     <div class="glass-card rounded-2xl p-6 mb-5">
-      <pre class="font-label-sm text-label-sm text-on-surface-variant bg-black/30 rounded-xl p-5 overflow-x-auto leading-loose border border-white/5">&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;  I&#178;C (Digital)    &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
-&#9474; BME280 Sensor  &#9474; &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9654; &#9474;                 &#9474;
-&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                  &#9474;   ESP32           &#9474;
-&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;  Analog 0&#9472;3.3V  &#9474;   Micro-Server    &#9474;
-&#9474; MQ135 (div.)  &#9474; &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9654; &#9474;                 &#9474;
-&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                  &#9474;                 &#9474;
-&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;  Analog 0&#9472;3.3V  &#9474;                 &#9474;
-&#9474; Rain Sensor   &#9474; &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9654; &#9474;                 &#9474;
-&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                  &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
-                                           &#9474;
-                                    Wi-Fi / WebSockets
-                                           &#8595;
-&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;                  &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
-&#9474; Public Cloud  &#9474;                  &#9474;  Web Browser   &#9474;
-&#9474; Weather API   &#9474; &#9668;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; &#9474;  Client Portal  &#9474;
-&#9474; Metro Base.   &#9474;  JSON fetch(GET) &#9474;  (Live Charts)  &#9474;
-&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                  &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</pre>
+      <pre class="font-label-sm text-label-sm text-on-surface-variant bg-black/30 rounded-xl p-5 overflow-x-auto leading-loose border border-white/5">┌────────────────┐  I²C (Digital)   ┌─────────────────┐
+│ BME280 Sensor  │ ───────────────▶ │                   │
+└────────────────┘                  │      ESP32        │
+┌────────────────┐  Analog 0-3.3V   │   Micro-Server    │
+│ MQ135 (div.)   │ ───────────────▶ │                   │
+└────────────────┘                  │                   │
+┌────────────────┐  Analog 0-3.3V   │                   │
+│ Rain Sensor    │ ───────────────▶ │                   │
+└────────────────┘                  └─────────────────┘
+                                             │
+                                     Wi-Fi / WebSockets
+                                             ▼
+                                    ┌────────────────┐
+                                    │   Web Browser     │
+                                    │  Client Portal    │
+                                    │  (Live Charts)    │
+                                    └────────────────┘                  
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       <div class="glass-card rounded-xl p-5 border-t-2 border-primary/40">
         <span class="material-symbols-outlined text-primary mb-3 block">code</span>
         <p class="font-body-md font-bold text-on-surface mb-1">Frontend Technology</p>
-        <p class="font-label-sm text-label-sm text-on-surface-variant">CSS Grid, SVG gauges, and Chart.js / HTML5 Canvas for lightweight real-time plotting in the browser.</p>
+        <p class="font-label-sm text-label-sm text-on-surface-variant">Simple Browser compatible , HTML5 , Tailwind-CSS, JS, Chart.js resources.</p>
       </div>
       <div class="glass-card rounded-xl p-5 border-t-2 border-secondary/40">
         <span class="material-symbols-outlined text-secondary mb-3 block">sync</span>
@@ -375,11 +408,12 @@ GND &#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654
       </div>
       <div class="glass-card rounded-xl p-5 border-t-2 border-tertiary/40">
         <span class="material-symbols-outlined text-tertiary mb-3 block">cloud_download</span>
-        <p class="font-body-md font-bold text-on-surface mb-1">Client-Side Comparison API</p>
-        <p class="font-label-sm text-label-sm text-on-surface-variant">fetch() runs in the browser &#8212; regional meteorology pulled from cloud API without adding load to the ESP32.</p>
+        <p class="font-body-md font-bold text-on-surface mb-1">Real-Time Graph Rendering</p>
+        <p class="font-label-sm text-label-sm text-on-surface-variant">Live Graphs reading are fetched reliably and auto-scaled to show noticeable minor changes as well.</p>
       </div>
     </div>
   </section>
+
 
   <!-- Repo Structure + Getting Started -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-4">
@@ -388,16 +422,18 @@ GND &#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654;&#9654
         <span class="material-symbols-outlined text-secondary">folder_open</span> Repository Structure
       </h3>
       <div class="glass-card rounded-2xl p-6">
-        <pre class="font-label-sm text-label-sm text-on-surface-variant leading-loose"><span class="text-primary">src/</span>
-  <span class="text-secondary">main_system/</span>         # Production unified code
-    &#9492; main_system.ino
-  <span class="text-secondary">prototypes/</span>          # Isolated unit tests
-    &#9500; led_pwm_demo/      # Hardware PWM
-    &#9500; bme280_i2c_test/   # I&#178;C scanning
-    &#9500; rain_sensor_analog/ # Moisture mapping
-    &#9492; mq135_calibrated/  # Localized multiplier
-<span class="text-tertiary">docs/</span>                # Sensor guides, wiring, datasheets
-README.md</pre>
+        <pre class="font-label-sm text-label-sm text-on-surface-variant leading-loose whitespace-pre-wrap break-words"><span class="text-primary">src/</span>
+  <span class="text-secondary">Software/</span>          <span class="opacity-50"># Web UI &amp; ESP32 Code</span>
+    ├ *.html           <span class="opacity-50"># Dashboard Frontend</span>
+    └ ESP32_server.ino <span class="opacity-50"># Server Backend</span>
+  <span class="text-secondary">prototypes/</span>        <span class="opacity-50"># Hardware Unit Tests</span>
+    ├ BME280_test/     <span class="opacity-50"># I&#178;C telemetry</span>
+    ├ RainSensor_test/ <span class="opacity-50"># Conductivity mapping</span>
+    └ MQ135_test/      <span class="opacity-50"># Baseline multiplier</span>
+  <span class="text-secondary">assets/</span>            <span class="opacity-50"># Static resources</span>
+<span class="text-tertiary">FINAL WORKING PROTOTYPE.INO</span>  <span class="opacity-50"># Firmware</span>
+<span class="text-tertiary">build_webpages.py</span>  <span class="opacity-50"># HTML &#8594; C++ Header</span>
+<span class="text-tertiary">README.md</span></pre>
       </div>
     </section>
     <section>
@@ -408,26 +444,34 @@ README.md</pre>
         <div class="glass-card rounded-xl p-4 flex gap-4 items-start">
           <span class="w-6 h-6 rounded-full bg-primary/20 text-primary font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
           <div>
+            <p class="font-body-md font-bold text-on-surface mb-1">Redirect to Github Repository</p>
+            <code class="font-label-sm text-label-sm text-secondary bg-black/30 px-3 py-1.5 rounded-lg block break-all">Click on the "Github Repo" button in the left side panel ( bottom )</code>
+          </div>
+        </div>
+        
+        <div class="glass-card rounded-xl p-4 flex gap-4 items-start">
+          <span class="w-6 h-6 rounded-full bg-primary/20 text-primary font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+          <div>
             <p class="font-body-md font-bold text-on-surface mb-1">Clone the Repository</p>
             <code class="font-label-sm text-label-sm text-secondary bg-black/30 px-3 py-1.5 rounded-lg block break-all">git clone https://github.com/yourusername/esp32-environmental-dashboard.git</code>
           </div>
         </div>
         <div class="glass-card rounded-xl p-4 flex gap-4 items-start">
-          <span class="w-6 h-6 rounded-full bg-primary/20 text-primary font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+          <span class="w-6 h-6 rounded-full bg-primary/20 text-primary font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
           <div>
             <p class="font-body-md font-bold text-on-surface mb-1">Open the Sketch</p>
             <p class="font-label-sm text-label-sm text-on-surface-variant">Load <code class="text-primary">src/main_system/main_system.ino</code> in Arduino IDE.</p>
           </div>
         </div>
         <div class="glass-card rounded-xl p-4 flex gap-4 items-start">
-          <span class="w-6 h-6 rounded-full bg-primary/20 text-primary font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+          <span class="w-6 h-6 rounded-full bg-primary/20 text-primary font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
           <div>
             <p class="font-body-md font-bold text-on-surface mb-1">Install Board Package &amp; Libraries</p>
             <p class="font-label-sm text-label-sm text-on-surface-variant">Install ESP32 board manager + <span class="text-primary">Adafruit BME280 Library</span> via Arduino Library Manager.</p>
           </div>
         </div>
         <div class="glass-card rounded-xl p-4 flex gap-4 items-start">
-          <span class="w-6 h-6 rounded-full bg-primary/20 text-primary font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+          <span class="w-6 h-6 rounded-full bg-primary/20 text-primary font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
           <div>
             <p class="font-body-md font-bold text-on-surface mb-1">Configure Wi-Fi &amp; Calibrate MQ135</p>
             <p class="font-label-sm text-label-sm text-on-surface-variant">Update SSID/Password in source. Pre-heat MQ135 for <span class="text-secondary font-bold">&#8805;5 min</span>, note the Serial Monitor raw ADC value, then set <code class="text-primary">MY_RAW_READING</code> to anchor the municipal-scaling algorithm.</p>
@@ -438,6 +482,15 @@ README.md</pre>
   </div>
 
 </main>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center p-4 lg:p-10 backdrop-blur-md transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
+  <button class="absolute top-6 right-6 text-white bg-white/10 hover:bg-white/20 p-2 rounded-full material-symbols-outlined transition-colors z-50">close</button>
+  <div id="lightbox-content" class="max-w-full max-h-full flex items-center justify-center relative" onclick="event.stopPropagation()">
+    <!-- Media injected here via JS -->
+  </div>
+</div>
+
 <script>
 function openDrawer(){
   document.getElementById('side-nav').classList.remove('-translate-x-full');
@@ -451,5 +504,49 @@ function closeDrawer(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
 window.addEventListener('resize',function(){if(window.innerWidth>=1024)closeDrawer();});
+
+// Lightbox functionality
+function openLightbox(element) {
+  const lightbox = document.getElementById('lightbox');
+  const content = document.getElementById('lightbox-content');
+  
+  // Clone the media element (img or video)
+  const media = element.querySelector('img, video').cloneNode(true);
+  
+  // Reset classes for the modal view
+  media.className = 'max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl';
+  
+  if (media.tagName === 'VIDEO') {
+    media.controls = true;
+    media.muted = false;
+  }
+  
+  content.innerHTML = '';
+  content.appendChild(media);
+  
+  // Show lightbox with fade in
+  lightbox.classList.remove('hidden');
+  lightbox.classList.add('flex');
+  setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  
+  // Fade out
+  lightbox.classList.add('opacity-0');
+  setTimeout(() => {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.getElementById('lightbox-content').innerHTML = ''; // Clear content to stop video
+    document.body.style.overflow = '';
+  }, 300);
+}
+
+// Add escape key listener for lightbox
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
 </script>
 </body></html>
